@@ -39,10 +39,11 @@ export default function SplitText({
   cursor = false,
 }: SplitTextProps) {
   const ref = useRef<HTMLElement>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const isInView = useInView(ref as React.RefObject<HTMLElement>, {
     once: false,
-    margin: margin as Parameters<typeof useInView>[1]['margin'],
-  });
+    margin: margin,
+  } as any);
 
   const chars = text.split('');
   const totalDuration = delay + chars.length * charDelay;
