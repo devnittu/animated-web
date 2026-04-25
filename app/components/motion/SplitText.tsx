@@ -2,6 +2,7 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { useIsMobile } from '../../hooks/useIsMobile';
 
 /**
  * SplitText — Snake / Typewriter scroll animation.
@@ -38,6 +39,7 @@ export default function SplitText({
   margin = '-10% 0px -10% 0px',
   cursor = false,
 }: SplitTextProps) {
+  const isMobile = useIsMobile();
   const ref = useRef<HTMLElement>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const isInView = useInView(ref as React.RefObject<HTMLElement>, {
@@ -47,6 +49,15 @@ export default function SplitText({
 
   const chars = text.split('');
   const totalDuration = delay + chars.length * charDelay;
+
+  // ── Mobile: instant render, no per-char animation (prevents lag) ──
+  if (isMobile) {
+    return (
+      <Tag ref={ref as any} className={className} style={{ display: 'block', ...style }}>
+        {text}
+      </Tag>
+    );
+  }
 
   return (
     <Tag

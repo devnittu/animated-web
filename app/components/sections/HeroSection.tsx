@@ -94,62 +94,58 @@ export default function HeroSection() {
         animate={{ scale: 1 }}
         transition={{ duration: 3.8, ease: [0.0, 0.0, 0.18, 1] }}
       >
-        {/* Orrery — cursor parallax */}
-        <motion.div
-          style={{
-            position: 'absolute',
-            left: '50%', top: '50%',
-            x: bhX, y: bhY,
-            transform: 'translate(-50%, -50%)',
-            zIndex: 11,
-          }}
-        >
-          <CosmicOrrery />
-        </motion.div>
-
-        {/* Hero text */}
-        <motion.div
-          style={{
-            position: 'relative',
-            zIndex: 20,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            textAlign: 'center',
-            padding: '0 2rem',
-            x: txX,
-            y: txY,
-          }}
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 1.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-        >
-          {/* ── Cinematic HeroTitle (Squid Game style reveal) ── */}
-          <HeroTitle />
-
-          {/* ── Subtitle ── */}
-          <motion.p
-            style={{
-              fontFamily: "var(--font-inter), 'Inter', sans-serif",
-              fontSize: 'clamp(0.88rem, 1.8vw, 1.05rem)',
-              fontWeight: 300,
-              lineHeight: 1.85,
-              color: 'rgba(255,255,255,0.38)',
-              maxWidth: '460px',
-              marginTop: '2rem',
-              marginBottom: '2.5rem',
-              fontStyle: 'italic',
-              letterSpacing: '0.01em',
-              textAlign: 'center',
-            }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 2.1, duration: 1 }}
+        {/* ── Hero two-column layout ── */}
+        <div style={{
+          position: 'relative',
+          zIndex: 20,
+          width: '100%',
+          maxWidth: '1280px',
+          padding: '0 2rem',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          gap: '2rem',
+          alignItems: 'center',
+          justifyItems: 'center',
+        }}>
+          {/* Left — title */}
+          <motion.div
+            style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', x: txX, y: txY }}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 1.4, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            Where gravity bends light, time dilates, and the impossible becomes reality.
-          </motion.p>
+            <HeroTitle />
+            <motion.p
+              style={{
+                fontFamily: "var(--font-inter), 'Inter', sans-serif",
+                fontSize: 'clamp(0.88rem, 1.6vw, 1rem)',
+                fontWeight: 300,
+                lineHeight: 1.85,
+                color: 'rgba(255,255,255,0.38)',
+                maxWidth: '420px',
+                marginTop: '1.5rem',
+                fontStyle: 'italic',
+                letterSpacing: '0.01em',
+              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 2.1, duration: 1 }}
+            >
+              Where gravity bends light, time dilates, and the impossible becomes reality.
+            </motion.p>
+          </motion.div>
 
-        </motion.div>
+          {/* Right — orrery (prominent, visible) */}
+          <motion.div
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', x: bhX, y: bhY }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3, duration: 2, ease: [0.2, 0, 0, 1] }}
+          >
+            <CosmicOrrery variant="hero" />
+          </motion.div>
+        </div>
+
 
         {/* ── Rocket scroll indicator ── */}
         <motion.div
