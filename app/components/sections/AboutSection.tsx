@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import FadeIn from '../motion/FadeIn';
 import SectionHeading from '../ui/SectionHeading';
+import SplitText from '../motion/SplitText';
 import StaggerChildren, { StaggerItem } from '../motion/StaggerChildren';
 
 const WRAP: React.CSSProperties = {
@@ -79,8 +80,21 @@ export default function AboutSection() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem', marginTop: '3rem' }}>
               {[{ v: '93M', l: 'Miles / AU' }, { v: '8 min', l: 'Light Lag' }, { v: '5500°', l: 'Kelvin Core' }].map((s, i) => (
                 <div key={i}>
-                  <div style={{ fontFamily: "'Orbitron', monospace", fontSize: '1.55rem', fontWeight: 600, color: '#fff', marginBottom: '0.3rem' }}>{s.v}</div>
-                  <div style={{ fontFamily: "'Orbitron', monospace", fontSize: '0.6rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.32)' }}>{s.l}</div>
+                  <SplitText
+                    text={s.v}
+                    delay={i * 0.12}
+                    stagger={0.06}
+                    scatter={120}
+                    style={{
+                      fontFamily: "var(--font-space-grotesk), 'Space Grotesk', sans-serif",
+                      fontSize: '1.6rem',
+                      fontWeight: 700,
+                      color: '#fff',
+                      letterSpacing: '-0.02em',
+                      marginBottom: '0.3rem',
+                    }}
+                  />
+                  <div style={{ fontFamily: "var(--font-orbitron), 'Orbitron', monospace", fontSize: '0.6rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.32)' }}>{s.l}</div>
                 </div>
               ))}
             </div>

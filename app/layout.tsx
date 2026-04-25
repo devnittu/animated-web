@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Orbitron, Inter } from "next/font/google";
+import { Orbitron, Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
 const orbitron = Orbitron({
@@ -13,6 +13,13 @@ const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -32,7 +39,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${orbitron.variable} ${inter.variable}`}>
+    <html lang="en" className={`${orbitron.variable} ${inter.variable} ${spaceGrotesk.variable}`}>
       <body style={{ background: "#000" }}>
         {children}
       </body>
