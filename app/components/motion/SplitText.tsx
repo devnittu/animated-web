@@ -49,9 +49,8 @@ export default function SplitText({
   const totalDuration = delay + chars.length * charDelay;
 
   return (
-    // @ts-expect-error — dynamic tag
     <Tag
-      ref={ref}
+      ref={ref as React.RefObject<HTMLElement>}
       className={className}
       style={{ display: 'block', ...style }}
     >
