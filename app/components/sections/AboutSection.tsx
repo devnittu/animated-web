@@ -83,8 +83,7 @@ export default function AboutSection() {
                   <SplitText
                     text={s.v}
                     delay={i * 0.12}
-                    stagger={0.06}
-                    scatter={120}
+                    charDelay={0.08}
                     style={{
                       fontFamily: "var(--font-space-grotesk), 'Space Grotesk', sans-serif",
                       fontSize: '1.6rem',

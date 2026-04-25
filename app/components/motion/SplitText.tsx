@@ -50,7 +50,7 @@ export default function SplitText({
 
   return (
     <Tag
-      ref={ref as React.RefObject<HTMLElement>}
+      ref={ref as any}
       className={className}
       style={{ display: 'block', ...style }}
     >
